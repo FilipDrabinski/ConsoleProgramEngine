@@ -1,0 +1,62 @@
+#include "Object.h"
+Object::Object():_name(""),_layer(0),_x(0),_y(0),_visible(true),_active(true),_sprite(nullptr){}
+Object::Object(std::string name,unsigned int layer, int x, int y, bool visible, bool active, Sprite* sprite)
+               :_name(name),_layer(layer),_x(x),_y(y),_visible(visible),_active(active),_sprite(sprite){}
+Object::~Object(){
+    _layer = 0;
+    _x = _y = 0;
+    _visible = false;
+    _active = false;
+    if(_sprite != nullptr){
+        delete _sprite;
+        _sprite = nullptr;
+    }
+}
+
+std::string GetName();
+void SetName(std::string newName);
+
+unsigned int Object::GetLayer(){
+    return _layer;
+}
+void Object::SetLayer(unsigned int id){
+    _layer = id;
+}
+
+int Object::GetX(){
+    return _x;
+}
+void Object::SetX(int newX){
+    _x = newX;
+}
+
+int Object::GetY(){
+    return _y;
+}
+void Object::SetY(int newY){
+    _y = newY;
+}
+
+bool Object::GetActive(){
+    return _active;
+}
+void Object::SetActive(bool value){
+    _active = value;
+}
+
+bool Object::GetVisible(){
+    return _visible;
+}
+void Object::SetVisible(bool value){
+    _visible = value;
+}
+
+Sprite* Object::GetSprite(){
+    return _sprite;
+}
+void Object::SetSprite(Sprite* newSpritePtr){
+    if(_sprite != nullptr){
+        delete _sprite;
+        _sprite = newSpritePtr;
+    }
+}

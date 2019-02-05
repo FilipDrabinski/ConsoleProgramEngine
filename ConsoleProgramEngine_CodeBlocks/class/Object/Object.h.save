@@ -1,0 +1,45 @@
+#ifndef OBJECT_H
+#define OBJECT_H
+#define KEY char
+#define ACTION char
+#include "../Sprite/Sprite.h"
+class Object{
+private:
+    std::string _name;
+    unsigned int _layer;
+    int _x;
+    int _y;
+    bool _visible;
+    bool _active;
+    Sprite* _sprite;
+public:
+    Object();
+    Object(unsigned int layer, int x, int y, bool visible, bool active, Sprite* sprite);
+    ~Object();
+
+    std::string GetName();
+    void SetName(std::string newName);
+    
+    unsigned int GetLayer();
+    void SetLayer(unsigned int id);
+
+    int GetX();
+    void SetX(int newX);
+
+    int GetY();
+    void SetY(int newY);
+
+    bool GetActive();
+    void SetActive(bool value);
+
+    bool GetVisible();
+    void SetVisible(bool value);
+
+    Sprite* GetSprite();
+    void SetSprite(Sprite* newSpritePtr);
+
+    virtual void KeyboardCallback(KEY keyCode,ACTION action){}
+    virtual void Step(){}
+};
+
+#endif // SEGMENT_H

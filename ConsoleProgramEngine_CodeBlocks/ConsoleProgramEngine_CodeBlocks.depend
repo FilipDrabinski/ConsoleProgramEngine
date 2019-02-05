@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1549407487 source:c:\users\filip\desktop\consoleprogramengine\consoleprogramengine_codeblocks\class\object\object.cpp
+	"Object.h"
+
+1549407492 c:\users\filip\desktop\consoleprogramengine\consoleprogramengine_codeblocks\class\object\object.h
+
+1549407537 c:\users\filip\desktop\consoleprogramengine\consoleprogramengine_codeblocks\class\sprite\sprite.h
+
+1549407528 source:c:\users\filip\desktop\consoleprogramengine\consoleprogramengine_codeblocks\class\sprite\sprite.cpp
+	"Sprite.h"
+
+1549407281 source:c:\users\filip\desktop\consoleprogramengine\consoleprogramengine_codeblocks\class\engine\engine.cpp
+	"Engine.h"
+
+1549407357 c:\users\filip\desktop\consoleprogramengine\consoleprogramengine_codeblocks\class\engine\engine.h
+	"../Input/input.h"
+	"../Object/Object.h"
+	"../Segment/Segment.h"
+	"../Sprite/Sprite.h"
+
+1549407421 c:\users\filip\desktop\consoleprogramengine\consoleprogramengine_codeblocks\class\input\input.h
+
+1549407283 c:\users\filip\desktop\consoleprogramengine\consoleprogramengine_codeblocks\class\segment\segment.h
+
+1549407546 source:c:\users\filip\desktop\consoleprogramengine\consoleprogramengine_codeblocks\main.cpp
+	"class/Engine/Engine.h"
+
+1549407448 source:c:\users\filip\desktop\consoleprogramengine\consoleprogramengine_codeblocks\class\segment\segment.cpp
+	"Segment.h"
+

@@ -1,0 +1,190 @@
+#include "Sprite.h"
+#include <iostream>
+#include <fstream>
+//public:
+Sprite::Sprite():_name(""),_height(0),_width(0),_characters(nullptr),_charactersOpacity(false),_charactersOpacityMask(nullptr),_colors(nullptr),_backgroundColorsOpacity(false),_textColorsOpacity(false),_colorsOpacityMask(nullptr){}
+Sprite::Sprite(Sprite& o){
+    _name = o._name;
+    _height = o._height;
+    _width = o._width;
+    _charactersOpacity = o._charactersOpacity;
+    _backgroundColorsOpacity = o._backgroundColorsOpacity;
+    _textColorsOpacity = o._textColorsOpacity;
+    _allocateTables();
+    for (int i = 0; i < _height*_width; i++){
+        _characters[i] = o._characters[i];
+        _charactersOpacityMask[i] = o._charactersOpacityMask[i];
+        _colors[0][i] = o._colors[0][i];
+        _colors[1][i] = o._colors[1][i];
+        _colorsOpacityMask[i] = o._colorsOpacityMask[i];
+    }
+}
+Sprite::Sprite(std::string fileName){
+    LoadFromFile(fileName);
+}
+Sprite::Sprite(std::string name, unsigned int height, unsigned int width, bool charactersOpacity, bool textColorsOpacity,bool backgroundColorsOpacity)
+:_name(name),_height(height),_width(width),_charactersOpacity(charactersOpacity),_backgroundColorsOpacity(backgroundColorsOpacity),_textColorsOpacity(textColorsOpacity){
+    _allocateTables();
+}
+
+std::string Sprite::GetName(){
+    return _name;
+}
+void Sprite::SetName(std::string newName){
+    _name = newName;
+    _name.shrink_to_fit();
+}
+
+unsigned int Sprite::GetHeight(){
+    return _height;
+}
+void Sprite::SetHeight(unsigned int newHeight){
+    _ReAllocateTables(newHeight,_width);
+}
+
+unsigned int Sprite::GetWidth(){
+    return _width;
+}
+void Sprite::SetWidth(unsigned int newWidth){
+    _ReAllocateTables(_height,newWidth);
+}
+
+void Sprite::SetSize(unsigned int newHeight, unsigned int newWidth){
+    _ReAllocateTables(newHeight,newWidth);
+}
+
+char Sprite::GetCharacter(unsigned int y, unsigned int x){
+    return  _characters[ (y * _height) + x];//[i*_height + j]
+}
+void Sprite::SetCharacter(unsigned int y, unsigned int x, char newCharacter){
+    _characters[ (y * _height) + x] = newCharacter;
+}
+
+bool Sprite::GetCharactersOpacity(){
+    return _charactersOpacity;
+}
+void Sprite::SetCharactersOpacity(bool newState){
+    _charactersOpacity = newState;
+}
+
+bool Sprite::GetCharactersOpacityMask(unsigned int y, unsigned int x){
+    return _charactersOpacityMask[ (y * _height) + x];
+}
+void Sprite::SetCharactersOpacityMask(unsigned int y, unsigned int x,bool newState){
+    _charactersOpacityMask[ (y * _height) + x] = newState;
+}
+
+unsigned char Sprite::GetBackgroundColor(unsigned int y,unsigned int x){
+    return _colors[0][ (y * _height) + x];
+}
+void Sprite::SetBackgroundColor(unsigned int y, unsigned int x,unsigned int newColor){
+    _colors[0][ (y * _height) + x] = newColor;
+}
+
+unsigned char Sprite::GetTextColor(unsigned int y,unsigned int x){
+    return _colors[1][ (y * _height) + x];
+}
+void Sprite::SetTextColor(unsigned int y, unsigned int x,unsigned int newColor){
+    _colors[1][ (y * _height) + x] = newColor;
+}
+
+bool Sprite::GetBackgroundColorsOpacity(){
+    return _backgroundColorsOpacity;
+}
+void Sprite::SetBackgroundColorsOpacity(bool newState){
+    _backgroundColorsOpacity = newState;
+}
+
+bool Sprite::GetTextColorsOpacity(){
+    return _textColorsOpacity;
+}
+void Sprite::SetTextColorsOpacity(bool newState){
+    _textColorsOpacity = newState;
+}
+
+bool Sprite::GetColorsOpacityMask(unsigned int y, unsigned int x){
+    return _colorsOpacityMask[ (y * _height) + x];
+}
+void Sprite::SetColorsOpacityMask(unsigned int y, unsigned int x,bool newState){
+    _colorsOpacityMask[ (y * _height) + x] = newState;
+}
+
+void Sprite::Combine(unsigned int y, unsigned int x, Sprite& spr){
+    for(int i = 0; i < _height; i++){
+        for(int j = 0; j < _width; j++){
+            int a = i-y; int b = j-x;
+            if((a >= 0)&&(b >= 0)) SetCharacter(i,j,spr.GetCharacter(a,b));
+            if((a >= spr.GetHeight())&&())
+        }
+    }
+
+}
+
+void Sprite::LoadFromFile(std::string fileName){
+    _name = fileName;
+    fileName = SPRITES_FOLDER_PATH + fileName + SPRITE_FILE_EXTENSION;
+    std::ifstream fIn(fileName);
+    std::string line;
+    if(fIn.is_open()){
+        fIn >> _height >> _width >> _charactersOpacity >> _backgroundColorsOpacity >> _textColorsOpacity;
+        _allocateTables();
+        std::getline(fIn,line);
+        std::getline(fIn,line);
+        //std::cout << line << std::endl <<std::endl;
+        _characters = &line[0];
+        _characters[_width*_height] = '\0';
+        //std::cout << _characters;
+        for(int i = 0; i < _height*_width; i++){
+            fIn >> _charactersOpacityMask[i] >> _colorsOpacityMask[i];
+        }
+        fIn.close();
+    }
+}
+void Sprite::SaveToFile(std::string fileName){
+    fileName = SPRITES_FOLDER_PATH + fileName + SPRITE_FILE_EXTENSION;
+    std::ofstream fOut(fileName);
+    if(fOut.is_open()){
+        fOut << _height <<" "<< _width <<" "<< _charactersOpacity <<" "<< _backgroundColorsOpacity <<" "<< _textColorsOpacity <<"\n";
+        fOut << _characters <<"\n";
+        for(int i = 0; i < _height*_width; i++){
+            fOut << _charactersOpacityMask[i] <<" "<< _colorsOpacityMask[i] <<" ";
+        }
+        fOut.close();
+    }
+}
+
+//private:
+void Sprite::_allocateTables(){
+    unsigned int Size = _height*_width;
+    _characters = new char[Size + 1];
+    _characters[Size] = '\0';
+    _charactersOpacityMask = new bool[Size];
+    _colors = new unsigned char*[2];
+    _colors[0] = new unsigned char[Size];
+    _colors[1] = new unsigned char[Size];
+    _colorsOpacityMask = new bool[Size];
+    for (int i = 0; i < Size; i++){
+        _characters[i] = ' ';
+        _charactersOpacityMask[i] = true;
+        _colors[0][i] = 0;
+        _colors[1][i] = 7;
+        _colorsOpacityMask[i] = true;
+    }
+}
+void Sprite::_ReAllocateTables(unsigned int height, unsigned int width){
+    Sprite tmpSpr((*this));
+    _name = tmpSpr._name;
+    _height = height;
+    _width = width;
+    _charactersOpacity = tmpSpr._charactersOpacity;
+    _backgroundColorsOpacity = tmpSpr._backgroundColorsOpacity;
+    _textColorsOpacity = tmpSpr._textColorsOpacity;
+    _allocateTables();
+    for (int i = 0; i < tmpSpr._height*tmpSpr._width; i++){
+        _characters[i] = tmpSpr._characters[i];
+        _charactersOpacityMask[i] = tmpSpr._charactersOpacityMask[i];
+        _colors[0][i] = tmpSpr._colors[0][i];
+        _colors[1][i] = tmpSpr._colors[1][i];
+        _colorsOpacityMask[i] = tmpSpr._colorsOpacityMask[i];
+    }
+}

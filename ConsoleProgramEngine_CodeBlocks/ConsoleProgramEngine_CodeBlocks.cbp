@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="ConsoleProgramEngine_CodeBlocks" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="Engine\;Program\;Engine\Class\;Engine\Class\Input\;Engine\Class\Object\;Engine\Class\MutexLock\;Engine\Class\Sprite\;Engine\Class\Engine\;Engine\Class\Segment\;" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/ConsoleProgramEngine_CodeBlocks" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/ConsoleProgramEngine_CodeBlocks" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="class/Engine/Engine.cpp">
+			<Option virtualFolder="Engine/Class/Engine/" />
+		</Unit>
+		<Unit filename="class/Engine/Engine.h">
+			<Option virtualFolder="Engine/Class/Engine/" />
+		</Unit>
+		<Unit filename="class/Input/input.cpp">
+			<Option virtualFolder="Engine/Class/Input/" />
+		</Unit>
+		<Unit filename="class/Input/input.h">
+			<Option virtualFolder="Engine/Class/Input/" />
+		</Unit>
+		<Unit filename="class/MutexLock/MutexLock.h">
+			<Option virtualFolder="Engine/Class/MutexLock/" />
+		</Unit>
+		<Unit filename="class/Object/Object.cpp">
+			<Option virtualFolder="Engine/Class/Object/" />
+		</Unit>
+		<Unit filename="class/Object/Object.h">
+			<Option virtualFolder="Engine/Class/Object/" />
+		</Unit>
+		<Unit filename="class/Segment/Segment.cpp">
+			<Option virtualFolder="Engine/Class/Segment/" />
+		</Unit>
+		<Unit filename="class/Segment/Segment.h">
+			<Option virtualFolder="Engine/Class/Segment/" />
+		</Unit>
+		<Unit filename="class/Sprite/Sprite.cpp">
+			<Option virtualFolder="Engine/Class/Sprite/" />
+		</Unit>
+		<Unit filename="class/Sprite/Sprite.h">
+			<Option virtualFolder="Engine/Class/Sprite/" />
+		</Unit>
+		<Unit filename="main.cpp">
+			<Option virtualFolder="Program/" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
