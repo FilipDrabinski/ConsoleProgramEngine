@@ -39,6 +39,9 @@
 		<Unit filename="class/Engine/Engine.h">
 			<Option virtualFolder="Engine/Class/Engine/" />
 		</Unit>
+		<Unit filename="class/Input/InputDebug.h">
+			<Option virtualFolder="Engine/Class/Input/" />
+		</Unit>
 		<Unit filename="class/Input/input.cpp">
 			<Option virtualFolder="Engine/Class/Input/" />
 		</Unit>

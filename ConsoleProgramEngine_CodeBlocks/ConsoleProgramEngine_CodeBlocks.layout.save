@@ -2,9 +2,9 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="class\Input\input.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="class\Input\input.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1287" topLine="42" />
+			<Cursor1 position="1409" topLine="0" />
 		</Cursor>
 		<Folding>
 			<Collapse line="3" />
@@ -14,6 +14,7 @@
 			<Collapse line="24" />
 			<Collapse line="27" />
 			<Collapse line="31" />
+			<Collapse line="34" />
 			<Collapse line="38" />
 			<Collapse line="41" />
 		</Folding>
@@ -21,11 +22,6 @@
 	<File name="class\MutexLock\MutexLock.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="58" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="119" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="class\Engine\Engine.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -43,18 +39,17 @@
 			<Cursor1 position="75" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="class\Input\InputDebug.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="class\Input\InputDebug.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="61" topLine="0" />
+			<Cursor1 position="324" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="class\Input\input.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="class\Input\input.h" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1212" topLine="2" />
+			<Cursor1 position="1270" topLine="0" />
 		</Cursor>
 		<Folding>
 			<Collapse line="5" />
-			<Collapse line="12" />
 		</Folding>
 	</File>
 	<File name="class\Object\Object.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">

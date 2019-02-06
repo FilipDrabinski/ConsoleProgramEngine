@@ -1,4 +1,5 @@
 #include "Input.h"
+#include "InputDebug.h"
 /**---KeyAndAction---**/
 KeyAndAction::KeyAndAction(char key,unsigned int action){
     this->key = key;
@@ -12,8 +13,7 @@ KeyAndAction& KeyAndAction::operator()(char key, unsigned int action){
 }
 
 /**---InputQueueNode---**/
-InputQueueNode::InputQueueNode(InputQueueNode* previous,KeyAndAction data,InputQueueNode* next)
-                               :_previous(previous),_data(data),_next(next){}
+InputQueueNode::InputQueueNode(InputQueueNode* previous,KeyAndAction data,InputQueueNode* next):_previous(previous),_data(data),_next(next){}
 
 void InputQueueNode::SetPreviousPtr(InputQueueNode* newPrevious){
     _previous = newPrevious;
@@ -50,4 +50,74 @@ void InputQueueNode::DeletePrevious(){
 }
 
 /**--InputQueue--**/
-//
+InputQueue::InputQueue():_head(nullptr),_tail(nullptr),_size(0){}
+
+void InputQueue::SetHead(InputQueueNode* newHead){
+    _head = newHead;
+}
+InputQueueNode* InputQueue::GetHead(){
+    return _head;
+}
+
+void InputQueue::SetTail(InputQueueNode* newTail){
+    _tail = newTail;
+}
+InputQueueNode* InputQueue::GetTail(){
+    return _tail;
+}
+
+unsigned int InputQueue::GetSize(){
+    return _size;
+}
+bool InputQueue::IsEmpty(){
+    return (_size == 0);
+}
+
+void InputQueue::AddLast(KeyAndAction data){
+    if(_size == 0){
+        _head = new InputQueueNode(nullptr,data);
+        _tail = _head;
+        _size++;
+        return;
+    }
+    if((_tail->GetData().key == data.key)&&(_tail->GetData().action == 2)){
+        while(_tail->GetData().action == 2){
+            _tail->DeletePrevious();
+            _size--;
+        }
+    }
+    _tail->CreateNext(data);
+    _tail = _tail->GetNextPtr();
+    _size++;
+    return;
+}
+
+KeyAndAction InputQueue::GetFirst(){
+    return _head->GetData();
+}
+void InputQueue::DeleteFirst(){
+    InputQueueNode* tmp = _head->GetNextPtr();
+    delete _head;
+    _head = tmp;
+    _size --;
+}
+
+void InputQueue::_DebugPrint(){
+    if(_head == nullptr)return;
+    InputQueueNode* tmp = _head;
+    while(tmp->GetNextPtr() != nullptr){
+        std::cout << "(" << tmp->GetData().key <<", "<< tmp->GetData().action<<") ";
+        tmp = tmp->GetNextPtr();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
