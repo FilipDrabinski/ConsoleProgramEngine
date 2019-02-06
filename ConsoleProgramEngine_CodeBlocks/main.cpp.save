@@ -6,6 +6,6 @@ int main()
     a('b',1);
     InputQueueNode IQN(nullptr,a,nullptr);
     InputQueueNode IQN2(&IQN,a,nullptr);
-    IQN2.SetPreviousPtr(nullptr);
+    I
     return 0;
 }

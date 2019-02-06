@@ -1,0 +1,17 @@
+#ifndef INPUT_DEBUG_MODE_H
+    #define INPUT_DEBUG_MODE_H
+
+    #define INPUT_DEBUG_MODE 1
+    #if INPUT_DEBUG_MODE
+        #include <iostream>
+        #include <time.h>
+        #include <chrono>
+        #define $I_MSG(msg) std::cout << msg ;
+        std::chrono::system_clock::now()
+        #define _TIME_ ctime(std::chrono::system_clock::to_time_t(time_now))
+        #define _PF_ __PRETTY_FUNCTION__
+    #else
+        #define $I_MSG(msg)
+        #define _PF_ ""
+    #endif // INPUT_DEBUG_MODE
+#endif // INPUT_DEBUG_MODE_H
