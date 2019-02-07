@@ -1,5 +1,6 @@
 #include "Input.h"
 #include "InputDebug.h"
+/**==================================================================**/
 /**---KeyAndAction---**/
 KeyAndAction::KeyAndAction(char key,unsigned int action){
     this->key = key;
@@ -11,7 +12,7 @@ KeyAndAction& KeyAndAction::operator()(char key, unsigned int action){
     if (action < 3)this->action = action;
     else this->action = 3;// Unknown
 }
-
+/**==================================================================**/
 /**---InputQueueNode---**/
 InputQueueNode::InputQueueNode(InputQueueNode* previous,KeyAndAction data,InputQueueNode* next):_previous(previous),_data(data),_next(next){}
 
@@ -48,7 +49,7 @@ void InputQueueNode::DeletePrevious(){
     delete tmp->_next;
     tmp->_next = this;
 }
-
+/**==================================================================**/
 /**--InputQueue--**/
 InputQueue::InputQueue():_head(nullptr),_tail(nullptr),_size(0){}
 
@@ -80,11 +81,15 @@ void InputQueue::AddLast(KeyAndAction data){
         _size++;
         return;
     }
-    if((_tail->GetData().key == data.key)&&(_tail->GetData().action == 2)){
-        while(_tail->GetData().action == 2){
-            _tail->DeletePrevious();
-            _size--;
-        }
+    while((data.action == 0)&&(_tail->GetData().action == 2)&&(data.key = _tail->GetData().key)&&(_tail !=_head)){
+        _tail = _tail->GetPreviousPtr();
+        _tail->DeleteNext();
+        _size--;
+    }
+    while((data.action == 0)&&(_tail->GetData().action == 0)){
+        _tail = _tail->GetPreviousPtr();
+        _tail->DeleteNext();
+        _size--;
     }
     _tail->CreateNext(data);
     _tail = _tail->GetNextPtr();
@@ -105,7 +110,7 @@ void InputQueue::DeleteFirst(){
 void InputQueue::_DebugPrint(){
     if(_head == nullptr)return;
     InputQueueNode* tmp = _head;
-    while(tmp->GetNextPtr() != nullptr){
+    while(tmp != nullptr){
         std::cout << "(" << tmp->GetData().key <<", "<< tmp->GetData().action<<") ";
         tmp = tmp->GetNextPtr();
     }
