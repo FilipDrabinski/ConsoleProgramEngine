@@ -74,8 +74,11 @@
 	"../Segment/Segment.h"
 	"../Sprite/Sprite.h"
 
-1549487080 d:\github\consoleprogramengine\consoleprogramengine_codeblocks\class\input\input.h
+1549498905 d:\github\consoleprogramengine\consoleprogramengine_codeblocks\class\input\input.h
 	"InputDebug.h"
+	<thread>
+	<mutex>
+	<chrono>
 
 1549486398 d:\github\consoleprogramengine\consoleprogramengine_codeblocks\class\input\inputdebug.h
 	<iostream>
@@ -86,7 +89,7 @@
 
 1549407537 d:\github\consoleprogramengine\consoleprogramengine_codeblocks\class\sprite\sprite.h
 
-1549497794 source:d:\github\consoleprogramengine\consoleprogramengine_codeblocks\class\input\input.cpp
+1549498632 source:d:\github\consoleprogramengine\consoleprogramengine_codeblocks\class\input\input.cpp
 	"Input.h"
 	"InputDebug.h"
 

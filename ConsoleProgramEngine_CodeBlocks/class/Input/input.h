@@ -1,6 +1,10 @@
 #ifndef INPUT_H
 #define INPUT_H
+#define PREV_KEY_BUFFER_SIZE 4
 #include "InputDebug.h"
+#include <thread>
+#include <mutex>
+#include <chrono>
 
 
 struct KeyAndAction{
@@ -63,6 +67,13 @@ public:
 
 class Input{
 private:
+    InputQueue _queue;
+    KeyAndAction _history[PREV_KEY_BUFFER_SIZE];
+    bool _exit;
+    std::mutex _mtxKeys;
+    std::chrono::steady_clock::time_point _lastUpdate;
+    std::thread* inputLoop;
+    std::thread* releaseTimer;
 
 public:
 
