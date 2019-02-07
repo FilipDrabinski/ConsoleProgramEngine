@@ -1,0 +1,22 @@
+#ifndef SPRITE_H
+#define SPRITE_H
+#define SPRITES_FOLDER_PATH "Resources/Sprites/"
+#define SPRITE_FILE_EXTENSION ".Sprite"
+#include <string>
+#include <iostream>
+class Sprite{
+private:
+    std::string _name;
+    unsigned int _height;
+    unsigned int _width;
+    char* _characters;
+    bool _charactersOpacity;
+    bool* _charactersOpacityMask;
+    unsigned char** _colors;
+    bool _backgroundColorsOpacity;
+    bool _textColorsOpacity;
+    bool* _colorsOpacityMask;
+public:
+    
+};
+#endif // SPRITE_H

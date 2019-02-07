@@ -1,0 +1,22 @@
+#include "Segment.h"
+#include <iostream>
+void Segment::ObjectsKeyboardCallback(KEY keyCode,ACTION action){
+    KeyboardCallback(keyCode,action);
+    for(unsigned int i = 0; i < _objects.size(); i++){
+        if(_objects[i] != nullptr)_objects[i]->KeyboardCallback(keyCode,action);
+    }
+}
+void Segment::_Step(){
+    Step();
+    for(unsigned int i = 0; i < _objects.size(); i++){
+        if(_objects[i] != nullptr)
+            if(_objects[i]->GetActive())
+                _objects[i]->Step();
+    }
+}
+void Segment::_Render(){
+    Sprite Result("",_height,_width,0,0,0);
+    for(Object obj: _objects){
+        Result.Combine(obj.GetX(),obj.GetY(),(*obj.GetSprite()));
+    }
+}

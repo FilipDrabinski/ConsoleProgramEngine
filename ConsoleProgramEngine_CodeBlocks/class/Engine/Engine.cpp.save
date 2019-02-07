@@ -1,0 +1,45 @@
+#include "Engine.h"
+#include <iostream>
+#include <chrono>
+void Engine::EngineKeyboardCallback(KEY keyCode,ACTION action){
+    if((keyCode == 27)&&(action == ACTION_PRESS)){
+        _exit = true;
+    }
+}
+void Engine::HandleInput(){
+    if(!_input.GetQueueIsEmpty()){
+        KeyAndAction inputNow = _input.HandleQueueElement();
+        if(isprint(inputNow.key))std::cout << "[" << inputNow.key << "," <<(int) inputNow.action << "]";
+        EngineKeyboardCallback(inputNow.key,inputNow.action);
+        if(_segment != nullptr){
+            _segment->KeyboardCallback(inputNow.key,inputNow.action);
+            _segment->ObjectsKeyboardCallback(inputNow.key,inputNow.action);
+        }
+
+
+
+    }
+}
+
+
+
+Engine::Engine():_ProgramSpeed(30),_exit(false),_segment(nullptr){
+}
+void Engine::Run(){
+    Input& inputRef = _input;
+    unsigned int& programSpeedRef = _ProgramSpeed;
+    std::thread bgInput([&inputRef](){inputRef.Run();});
+    StartUp();
+    while(!_exit){
+        std::thread FrameRateControll([&programSpeedRef](){std::this_thread::sleep_for(std::chrono::milliseconds(((int)(1000 / programSpeedRef))));});
+        HandleInput();
+        if(_segment != nullptr)_segment->_Step();
+        //handle Render
+        FrameRateControll.join();
+    }
+    Closing();
+    _input.SetExit(_exit);
+    system("cls");
+    std::cout << "Press any key to exit...";
+    bgInput.join();
+}
