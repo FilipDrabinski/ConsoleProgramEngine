@@ -52,7 +52,15 @@ void InputQueueNode::DeletePrevious(){
 /**==================================================================**/
 /**--InputQueue--**/
 InputQueue::InputQueue():_head(nullptr),_tail(nullptr),_size(0){}
-
+InputQueue::~InputQueue(){
+    while (_size > 0){
+        DeleteFirst();
+    }
+    delete _head;
+    _head = nullptr;
+    _tail = nullptr;
+    _size = 0;
+}
 void InputQueue::SetHead(InputQueueNode* newHead){
     _head = newHead;
 }
@@ -98,13 +106,16 @@ void InputQueue::AddLast(KeyAndAction data){
 }
 
 KeyAndAction InputQueue::GetFirst(){
-    return _head->GetData();
+    if(_head != nullptr)return _head->GetData();
+    else return KeyAndAction(-1,3);
 }
 void InputQueue::DeleteFirst(){
-    InputQueueNode* tmp = _head->GetNextPtr();
-    delete _head;
-    _head = tmp;
-    _size --;
+        if(_head != nullptr){
+        InputQueueNode* tmp = _head->GetNextPtr();
+        delete _head;
+        _head = tmp;
+        _size --;
+    }
 }
 
 void InputQueue::_DebugPrint(){
@@ -117,8 +128,27 @@ void InputQueue::_DebugPrint(){
 }
 /**==================================================================**/
 /**--Input--**/
-
-
+void Input::_ReleaseTimer(){
+    KeyAndAction tmp2;
+    auto t1 = std::chrono::high_resolution_clock::now();
+    bool stopper = false;
+    while (!selfRef.GetExit()){
+        auto t2 = std::chrono::high_resolution_clock::now();
+        if(wasRepeated){
+            t1 = std::chrono::high_resolution_clock::now();
+            wasRepeated = false;
+            stopper = true;
+        }
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds> (t2 - t1);
+        if((duration.count() >= RELEASE_TIME)&&(wasRepeated == false)&&(stopper == true)&&(!wasReleased)){
+            selfRef.AddToQueue(tmp2(selfRef.GetCurrentKey(),ACTION_RELEASE));
+            stopper = false;
+            wasReleased = true;
+        }
+    }
+}
+void _InputLoop(){
+}
 
 
 

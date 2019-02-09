@@ -2,34 +2,9 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="class\Segment\Segment.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="75" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="class\Object\Object.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="19" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="class\Object\Object.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="76" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="class\Segment\Segment.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="22" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="class\Input\InputDebug.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="61" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="class\Sprite\Sprite.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="34" topLine="0" />
+			<Cursor1 position="250" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="class\Sprite\Sprite.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -37,14 +12,19 @@
 			<Cursor1 position="19" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="class\Segment\Segment.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="22" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="class\Engine\Engine.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="19" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="class\MutexLock\MutexLock.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="class\Input\InputDebug.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="58" topLine="0" />
+			<Cursor1 position="61" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="class\Engine\Engine.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -52,9 +32,9 @@
 			<Cursor1 position="157" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="class\Input\input.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="class\Input\input.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3304" topLine="66" />
+			<Cursor1 position="3811" topLine="43" />
 		</Cursor>
 		<Folding>
 			<Collapse line="4" />
@@ -67,20 +47,49 @@
 			<Collapse line="35" />
 			<Collapse line="39" />
 			<Collapse line="42" />
+			<Collapse line="54" />
+			<Collapse line="63" />
+			<Collapse line="66" />
+			<Collapse line="70" />
+			<Collapse line="73" />
+			<Collapse line="77" />
+			<Collapse line="80" />
+			<Collapse line="84" />
+			<Collapse line="107" />
+			<Collapse line="120" />
 		</Folding>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="250" topLine="0" />
-		</Cursor>
 	</File>
 	<File name="class\Input\input.h" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1533" topLine="12" />
+			<Cursor1 position="1991" topLine="35" />
 		</Cursor>
 		<Folding>
-			<Collapse line="9" />
-			<Collapse line="16" />
+			<Collapse line="17" />
 		</Folding>
+	</File>
+	<File name="class\Segment\Segment.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="75" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="class\Sprite\Sprite.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="34" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="class\MutexLock\MutexLock.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="58" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="class\Object\Object.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="76" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="class\Object\Object.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="19" topLine="0" />
+		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

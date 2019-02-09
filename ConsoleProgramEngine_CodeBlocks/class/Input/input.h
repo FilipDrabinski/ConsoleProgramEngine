@@ -10,6 +10,7 @@
 struct KeyAndAction{
     char key;
     unsigned int action:2;
+    KeyAndAction(){}
     KeyAndAction(char key, unsigned int action);
     KeyAndAction& operator()(char key, unsigned int action);
 };
@@ -47,7 +48,7 @@ private:
     unsigned int _size;
 public:
     InputQueue();
-
+    ~InputQueue();
     void SetHead(InputQueueNode* newHead);
     InputQueueNode* GetHead();
 
@@ -70,12 +71,28 @@ private:
     InputQueue _queue;
     KeyAndAction _history[PREV_KEY_BUFFER_SIZE];
     bool _exit;
+    bool _pause;
     std::mutex _mtxKeys;
     std::chrono::steady_clock::time_point _lastUpdate;
-    std::thread* inputLoop;
-    std::thread* releaseTimer;
-
+    std::thread* _inputLoop;
+    std::thread* _releaseTimer;
+    bool _repeatedFlag;
 public:
+    Input();
+
+    void PauseInput();
+    void ResumeInput();
+    bool IsPaused();
+
+    KeyAndAction GetQueueElement();
+    KeyAndAction GetPreviousKey(unsigned int index);
+
+    void SetExit(bool newState);
+    bool GetExit();
+private:
+    void _InputLoop();
+    void _ReleaseTimer();
+
 
 };
 #endif // INPUT_H
